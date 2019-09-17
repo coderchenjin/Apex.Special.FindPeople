@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/zaizai-login/index",
+    "pages/backend/index1",
+    "pages/backend/searchhome"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "usingComponents": {}
+}

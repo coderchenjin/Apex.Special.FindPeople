@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/zaizai-login/index",
+    "pages/backend/index1",
+    "pages/backend/intowarehouse",
+    "pages/backend/inspection",
+    "pages/backend/returnbigbags",
+    "pages/backend/movegoods",
+    "pages/backend/outofwarehouse"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "nvueCompiler": "weex",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "仔仔-登录注册示例",
+  "compilerVersion": "2.2.2",
+  "usingComponents": {}
+}

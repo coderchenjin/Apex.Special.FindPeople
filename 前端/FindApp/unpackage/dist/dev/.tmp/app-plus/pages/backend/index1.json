@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "titleNView": {
+    "autoBackButton": false
+  },
+  "usingComponents": {
+    "q-s-waves-button": "/components/QS-WavesButton/QS-WavesButton"
+  }
+}

@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"content.",[1],"data-v-4ccfab27 { text-align: center; }\n.",[1],"disabled_button.",[1],"data-v-4ccfab27 {}\n",],undefined,{path:"./pages/backend/index1.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/backend/index1.wxml') } }));

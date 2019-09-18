@@ -130,37 +130,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       AddClass: false,
       clickUrl: false,
-      btnList: [{
-        //preIconType: 'scan'  图标
-        //wavesColor: 'rgba(255,255,255,.6)',  自定义颜色
-        type: 'default',
-        txt: '入库收货',
-        disabled: false,
-        plain: true //镂空的波纹按钮
-      },
+      btnList: [
       {
         type: 'default',
         txt: '搜索首页',
         disabled: false,
         plain: true },
 
-      {
-        type: 'default',
-        txt: '还大包',
-        disabled: false,
-        plain: true },
-
-      {
-        type: 'default',
-        txt: '移库',
-        disabled: false,
-        plain: true },
-
-      {
-        type: 'default',
-        txt: '发货出库',
-        disabled: false,
-        plain: true },
 
       {
         type: 'default',

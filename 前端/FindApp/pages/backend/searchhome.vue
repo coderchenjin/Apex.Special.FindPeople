@@ -1,41 +1,28 @@
 <template>
-	<view>
-		<view style="text-align:center;font-size:120%">搜索</view>
-		<view class="uni-flex uni-column">
-			<view>
-				<input class="zai-input input-class" placeholder-class placeholder="搜索人名,项目" v-model="big" :focus="bigfocus"
-				 @confirm="big_confirm" @focus="focus_big" style="float:left;" />
-
-				<view style="margin-right: 6%;color: #CE0505;" :style="{display:TotalInpectionBig.length > 0 ? 'bolck' : 'none',float:'right'}">{{TotalInpectionBig}}个查验小包</view>
+	<view style="height: 100%;">
+		<view>
+			<view style="height: 295px;width: 100%;background: url('/static/img/bg1.png') no-repeat;background-size:100% 100%;">
+				<input class="uni-input input-class" placeholder-class :placeholder="icon" v-model="big" :focus="bigfocus"
+				 confirm-type="search" @confirm="big_confirm" @focus="focus_big" style="float:left;" />
 			</view>
-			<view style="clear: both;"></view>
+			<view style="height: 10px;"></view>
+			<view style="height: 50%;width: 100%;" class="uni-padding-wrap uni-common-mt">
+				<view style="float:right;margin-right: 5%;">清空</view>
+				<view style="margin-left: 5%;">搜索历史</view>
 
-、
-				<view class="uni-flex flex-item uni-row">
-					<view class="flex-item uni-bg-grey">
-						<button type="default">搜索历史</button>
-					</view>
-					<view class="flex-item uni-bg-grey">
-						<button type="default">清空</button>
-					</view>
-					<view class="flex-item uni-bg-grey">
-						<button type="default">清空</button>
-					</view>
-					<view class="flex-item uni-bg-grey">
-						<button type="default">清空</button>
-					</view>
-					<view class="flex-item uni-bg-grey">
-						<button type="default">清空</button>
-					</view>
-				</view>
-	、
+				<view><button type="default" size="mini">页面主操作 Disabled</button></view>
+				<view><button type="default" size="mini">页面主操作 Disabled</button></view>
+				<view><button type="default" size="mini">页面主操作 Disabled</button></view>
+
+			</view>
+
+
 			<view style="clear: both;"></view>
 
 
 		</view>
 	</view>
 </template>
-
 <script>
 	export default {
 		components: {},
@@ -53,7 +40,9 @@
 				InWareHouseNumber: 0,
 				bigdisabled: "disabled",
 				TotalInpectionBig: 0,
-				InpectionSmallBigData: []
+				InpectionSmallBigData: [],
+
+				icon: '搜索人名、项目'
 			}
 		},
 		onLoad() {
@@ -229,38 +218,21 @@
 
 <style>
 	.input-class {
-		width: 90%;
-		height: 50px;
-		margin-left: 5%;
-		margin-right: 5%;
-		margin-bottom: 10px;
-		border: 1px solid #0e141a;
+		width: 80%;
+		height: 38px;
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 235px;
+		border: 0px;
 		line-height: 50px;
-		border-radius: 10px;
+		border-radius: 20px;
+		background: #F8F8F8;
+		font-size: 16px;
+		text-align: center;
 
 	}
 
 	,
-	.remind_display {
-		display: block;
-		color: #CE0505;
-	}
-
-	.clearclass {
-		float: left;
-		font-size: 1;
-
-		line-height: 50px;
-		margin-right: 5%;
-		margin-left: 2px;
-	}
-
-	,
-	.Textclass {
-		font-size: 80%;
-		margin-left: 20px;
-		margin-bottom: 5px;
-	}
 
 	.input-disabled {
 		background-color: #C8C7CC;

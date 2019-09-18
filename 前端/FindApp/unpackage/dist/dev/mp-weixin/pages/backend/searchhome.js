@@ -130,19 +130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   components: {},
@@ -160,7 +147,9 @@ var _default =
       InWareHouseNumber: 0,
       bigdisabled: "disabled",
       TotalInpectionBig: 0,
-      InpectionSmallBigData: [] };
+      InpectionSmallBigData: [],
+
+      icon: '搜索人名、项目' };
 
   },
   onLoad: function onLoad() {

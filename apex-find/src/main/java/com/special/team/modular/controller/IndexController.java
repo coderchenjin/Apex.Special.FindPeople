@@ -1,8 +1,9 @@
 package com.special.team.modular.controller;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.special.team.modular.dao.UserMapper;
-import com.special.team.modular.model.User;
+import com.special.team.modular.Service.IndexService;
+import com.special.team.modular.constant.SuccessResponseData;
+import com.special.team.modular.vo.HotVo;
+import com.special.team.modular.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,18 +18,26 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    private UserMapper userMapper;
+    private IndexService indexService;
 
     /**
-     * 获取待办列表
+     * 热搜
      */
-    @RequestMapping(value = "/hello/{account}")
+    @RequestMapping(value = "/hotSeach")
     @ResponseBody
-    public Object hello(@PathVariable String account) {
-        List<User> accountList = userMapper.selectList(new EntityWrapper<User>().eq("account", account));
-        return accountList.get(0);
+    public Object hotSeach(String name) {
+        List<HotVo> hotVoList = indexService.hotSeach(name);
+        return new SuccessResponseData(200,"success",hotVoList);
     }
 
-
+    /**
+     * 热搜
+     */
+    @RequestMapping(value = "/seach")
+    @ResponseBody
+    public Object seach(String id) {
+        ResultVo vo = indexService.seach(id);
+        return new SuccessResponseData(200,"success",vo);
+    }
 
 }

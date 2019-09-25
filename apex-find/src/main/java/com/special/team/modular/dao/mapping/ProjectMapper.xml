@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.special.team.modular.dao.ProjectMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.special.team.modular.model.Project">
+		<result column="Id" property="Id" />
+		<result column="ProjectName" property="ProjectName" />
+		<result column="PorjectCode" property="PorjectCode" />
+		<result column="BeginDate" property="BeginDate" />
+		<result column="EndDate" property="EndDate" />
+		<result column="ProjectDescribe" property="ProjectDescribe" />
+		<result column="OpenedBy" property="OpenedBy" />
+		<result column="OpenedDate" property="OpenedDate" />
+		<result column="OpenedVersion" property="OpenedVersion" />
+		<result column="ClosedBy" property="ClosedBy" />
+		<result column="ClosedDate" property="ClosedDate" />
+		<result column="CanceledBy" property="CanceledBy" />
+		<result column="CanceledDate" property="CanceledDate" />
+		<result column="ProjectStatus" property="ProjectStatus" />
+		<result column="PO" property="po" />
+		<result column="PM" property="pm" />
+		<result column="QD" property="qd" />
+		<result column="RD" property="rd" />
+		<result column="Team" property="Team" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+        Id, ProjectName, PorjectCode, BeginDate, EndDate, ProjectDescribe, OpenedBy, OpenedDate, OpenedVersion, ClosedBy, ClosedDate, CanceledBy, CanceledDate, ProjectStatus, PO AS po, PM AS pm, QD AS qd, RD AS rd, Team
+    </sql>
+
+	<select id="selectByUserId" resultType="com.special.team.modular.model.Project">
+      SELECT
+		p.Id, ProjectName, PorjectCode, BeginDate, EndDate, ProjectDescribe, OpenedBy, OpenedDate, OpenedVersion, ClosedBy, ClosedDate, CanceledBy, CanceledDate, ProjectStatus, PO AS po, PM AS pm, QD AS qd, RD AS rd, Team
+	 FROM
+		`s_project` p
+		LEFT JOIN s_userproject s ON s.ProjectId = p.Id
+	 WHERE
+		s.UserId=#{userId}
+
+    </select>
+
+
+</mapper>

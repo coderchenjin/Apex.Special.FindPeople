@@ -2,7 +2,7 @@
 ###################  开发环境的profile  ###################
 #############################################################
 server:
-  port: 8011
+  port: 8080
 spring:
 #  datasource:
 #    url: jdbc:mysql://218.80.251.194:3316/queryman?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
@@ -16,7 +16,7 @@ spring:
     username: root
     driverClassName: com.mysql.jdbc.Driver
     password: root
-    maxActive: 5
+    maxActive: 50
     type: com.alibaba.druid.pool.DruidDataSource
 
 

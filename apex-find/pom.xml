@@ -12,6 +12,7 @@
     <artifactId>apex-find</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>apex-find</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -21,6 +22,7 @@
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <druid.version>1.1.6</druid.version>
         <hutool.version>4.1.0</hutool.version>
+        <skipTests>true</skipTests>
         <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
     </properties>
 
@@ -35,10 +37,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatisplus-spring-boot-starter</artifactId>
@@ -87,6 +89,7 @@
     </dependencies>
 
 
+
     <build>
         <pluginManagement>
             <plugins>
@@ -103,6 +106,17 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>2.0.1.RELEASE</version>
+                    <configuration>
+                        <fork>true</fork>
+                        <mainClass>com.lv.DiscoveryApplicaion</mainClass>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -118,4 +132,7 @@
             </resource>
         </resources>
     </build>
+
+
+
 </project>

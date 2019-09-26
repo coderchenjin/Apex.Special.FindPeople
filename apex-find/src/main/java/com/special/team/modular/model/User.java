@@ -10,297 +10,227 @@ import org.hibernate.validator.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_user")
+@TableName("s_user")
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键id
+     * 唯一号
      */
-    @TableId(value="id", type= IdType.AUTO)
-    private Integer id;
+    @TableId(value = "Id", type = IdType.AUTO)
+    private String Id;
     /**
-     * 头像
+     * 姓名
      */
-    private String avatar;
+    private String Name;
     /**
-     * 账号
+     * 英文名
      */
-    @NotBlank(message = "account require")
-    private String account;
+    private String NameEn;
     /**
-     * 密码
+     * 邮箱
      */
-    private String password;
-    /**
-     * md5密码盐
-     */
-    private String salt;
-    /**
-     * 名字
-     */
-    private String name;
-    /**
-     * 生日
-     */
-    private Date birthday;
-    /**
-     * 性别（1：男 2：女）
-     */
-    private Integer sex;
-    /**
-     * 电子邮件
-     */
-    private String email;
+    private String Email;
     /**
      * 电话
      */
-    private String phone;
+    private String Tel;
     /**
-     * 角色id
+     * 公司
      */
-    private String roleid;
+    private String Company;
     /**
-     * 部门id
+     * 部门
      */
-    private Integer deptid;
-
+    private String Department;
     /**
-     * 公司id
+     * 二级部门
      */
-    private Integer companyId;
-
+    private String DepartmentBranch;
     /**
-     * 状态(1：启用  2：冻结  3：删除）
+     * 职位
      */
-    private Integer status;
+    private String Position;
     /**
-     * 创建时间
+     * 工作地点
      */
-    private Date createtime;
+    private String WorkingLocation;
     /**
-     * 保留字段
+     * 直线
      */
-    private Integer version;
-
+    private String DirectNumber;
     /**
-     * 是否经理0不是1是
+     * 分机号
      */
-    private Integer ismanager;
-
+    private String ExtensionNumber;
     /**
-     * 是否经理0不是1是
+     * 简介
      */
-    private String fngroup;
+    private String Introduction;
+    /**
+     * 0离职；1：在职
+     */
+    private Boolean Status;
+    /**
+     * 是否激活
+     */
+    private Boolean Activated;
+    private String OpenId;
 
-    @TableField(exist=false)
-    private String type="1";//1 apex  2truck
 
-    @TableField("hp_type")
-    private String hpType;
-
-    @TableField("hp_consignee_name")
-    private String hpConsigneeName;
-
-    public String getHpType() {
-        return hpType;
+    public String getId() {
+        return Id;
     }
 
-    public void setHpType(String hpType) {
-        this.hpType = hpType;
-    }
-
-    public String getHpConsigneeName() {
-        return hpConsigneeName;
-    }
-
-    public void setHpConsigneeName(String hpConsigneeName) {
-        this.hpConsigneeName = hpConsigneeName;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getNameEn() {
+        return NameEn;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setNameEn(String NameEn) {
+        this.NameEn = NameEn;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTel() {
+        return Tel;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTel(String Tel) {
+        this.Tel = Tel;
     }
 
-    public String getRoleid() {
-        return roleid;
+    public String getCompany() {
+        return Company;
     }
 
-    public void setRoleid(String roleid) {
-        this.roleid = roleid;
+    public void setCompany(String Company) {
+        this.Company = Company;
     }
 
-    public Integer getDeptid() {
-        return deptid;
+    public String getDepartment() {
+        return Department;
     }
 
-    public void setDeptid(Integer deptid) {
-        this.deptid = deptid;
+    public void setDepartment(String Department) {
+        this.Department = Department;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getDepartmentBranch() {
+        return DepartmentBranch;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setDepartmentBranch(String DepartmentBranch) {
+        this.DepartmentBranch = DepartmentBranch;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public String getPosition() {
+        return Position;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setPosition(String Position) {
+        this.Position = Position;
     }
 
-    public Integer getVersion() {
-        return version;
+    public String getWorkingLocation() {
+        return WorkingLocation;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setWorkingLocation(String WorkingLocation) {
+        this.WorkingLocation = WorkingLocation;
     }
 
-
-
-
-    public Integer getCompanyId() {
-        return companyId;
+    public String getDirectNumber() {
+        return DirectNumber;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setDirectNumber(String DirectNumber) {
+        this.DirectNumber = DirectNumber;
     }
 
-
-    public Integer getIsmanager() {
-        return ismanager;
+    public String getExtensionNumber() {
+        return ExtensionNumber;
     }
 
-    public void setIsmanager(Integer ismanager) {
-        this.ismanager = ismanager;
+    public void setExtensionNumber(String ExtensionNumber) {
+        this.ExtensionNumber = ExtensionNumber;
+    }
+
+    public String getIntroduction() {
+        return Introduction;
+    }
+
+    public void setIntroduction(String Introduction) {
+        this.Introduction = Introduction;
+    }
+
+    public Boolean getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Boolean Status) {
+        this.Status = Status;
+    }
+
+    public Boolean getActivated() {
+        return Activated;
+    }
+
+    public void setActivated(Boolean Activated) {
+        this.Activated = Activated;
+    }
+
+    public String getOpenId() {
+        return OpenId;
+    }
+
+    public void setOpenId(String OpenId) {
+        this.OpenId = OpenId;
     }
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
-    }
-
-
-
-
-    public String getFngroup() {
-        return fngroup;
-    }
-
-    public void setFngroup(String fngroup) {
-        this.fngroup = fngroup;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        return this.Id;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", avatar=" + avatar +
-                ", account=" + account +
-                ", password=" + password +
-                ", salt=" + salt +
-                ", name=" + name +
-                ", birthday=" + birthday +
-                ", sex=" + sex +
-                ", email=" + email +
-                ", phone=" + phone +
-                ", roleid=" + roleid +
-                ", deptid=" + deptid +
-                ", status=" + status +
-                ", createtime=" + createtime +
-                ", version=" + version +
+        return "SUser{" +
+                "Id=" + Id +
+                ", Name=" + Name +
+                ", NameEn=" + NameEn +
+                ", Email=" + Email +
+                ", Tel=" + Tel +
+                ", Company=" + Company +
+                ", Department=" + Department +
+                ", DepartmentBranch=" + DepartmentBranch +
+                ", Position=" + Position +
+                ", WorkingLocation=" + WorkingLocation +
+                ", DirectNumber=" + DirectNumber +
+                ", ExtensionNumber=" + ExtensionNumber +
+                ", Introduction=" + Introduction +
+                ", Status=" + Status +
+                ", Activated=" + Activated +
+                ", OpenId=" + OpenId +
                 "}";
     }
 }

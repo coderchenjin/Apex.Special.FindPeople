@@ -11,9 +11,10 @@ import com.special.team.modular.dao.UserMapper;
 import com.special.team.modular.model.User;
 import com.special.team.modular.vo.HotVo;
 import com.special.team.modular.vo.ResultVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/index")
 public class IndexController {
+
+    private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private IndexService indexService;
@@ -42,6 +45,7 @@ public class IndexController {
         if(packages!=null&&packages!=""){
             JSONObject jo = JSONObject.parseObject(packages);
             if(jo.get("errcode") != null) {
+                logger.info("登录授权失败："+packages);
                 return new ErrorResponseData(500,"failed",jo.get("errmsg"));
             } else {
                 String openid = jo.get("openid").toString();
@@ -52,6 +56,7 @@ public class IndexController {
                 return new SuccessResponseData(200,"success",openid);
             }
         }else{
+            logger.info("登录授权失败："+packages);
             return new ErrorResponseData(500,"failed","授权失败");
         }
 

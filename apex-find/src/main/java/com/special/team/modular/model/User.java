@@ -1,14 +1,10 @@
 package com.special.team.modular.model;
 
 import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.io.Serializable;
-import java.util.Date;
 
 @TableName("s_user")
 public class User extends Model<User> {

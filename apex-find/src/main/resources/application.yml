@@ -1,7 +1,8 @@
 ##########################################################
 ##################  所有profile共有的配置  #################
 ##########################################################
-
+ws:
+  muti-datasource-open: false #是否开启多数据源(true/false)
 ###################  spring配置  ###################
 spring:
   profiles:
@@ -28,7 +29,7 @@ spring:
 ###################  mybatis-plus配置  ###################
 mybatis-plus:
   mapper-locations: classpath*:com/special/**/mapping/*.xml
-  typeAliasesPackage: com.special.team.modular.**.model
+  type-aliases-package: com.special.team.modular.model
   global-config:
     id-type: 0  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
     db-column-underline: false

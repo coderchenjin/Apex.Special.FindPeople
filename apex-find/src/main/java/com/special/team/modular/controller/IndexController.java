@@ -2,9 +2,13 @@ package com.special.team.modular.controller;
 
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.special.team.modular.Service.IndexService;
 import com.special.team.modular.constant.Constant;
+import com.special.team.modular.constant.ErrorResponseData;
 import com.special.team.modular.constant.SuccessResponseData;
+import com.special.team.modular.dao.UserMapper;
+import com.special.team.modular.model.User;
 import com.special.team.modular.vo.HotVo;
 import com.special.team.modular.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,8 @@ public class IndexController {
 
     @Autowired
     private IndexService indexService;
+    @Autowired
+    private UserMapper userMapper;
 
 
     /**
@@ -29,21 +35,26 @@ public class IndexController {
      */
     @RequestMapping(value = "/weChatAuthorization")
     @ResponseBody
-    public Object weChatAuthorization(String code) {
+    public Object weChatAuthorization(String code,String name,String tel) {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + Constant.APP_ID +
                 "&secret=" + Constant.APP_SECRET + "&js_code=" + code + "&grant_type=authorization_code";
         String packages = HttpUtil.get(url);
         if(packages!=null&&packages!=""){
             JSONObject jo = JSONObject.parseObject(packages);
             if(jo.get("errcode") != null) {
-                return "";
+                return new ErrorResponseData(500,"failed",jo.get("errmsg"));
             } else {
                 String openid = jo.get("openid").toString();
                 String str= openid.replace("\"", "");
-                return openid;
+                User user=new User();
+                user.setOpenId(str);
+                userMapper.update(user,new EntityWrapper<User>().eq("Name",name).and().eq("Tel",tel));
+                return new SuccessResponseData(200,"success",openid);
             }
+        }else{
+            return new ErrorResponseData(500,"failed","授权失败");
         }
-        return new SuccessResponseData(200,"success",null);
+
     }
 
     /**

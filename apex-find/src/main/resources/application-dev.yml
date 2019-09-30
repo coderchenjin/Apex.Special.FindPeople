@@ -4,20 +4,20 @@
 server:
   port: 8080
 spring:
-#  datasource:
-#    url: jdbc:mysql://218.80.251.194:3316/queryman?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
-#    username: root
-#    driverClassName: com.mysql.jdbc.Driver
-#    password: Epass/9108
-#    maxActive: 5
-#    type: com.alibaba.druid.pool.DruidDataSource
   datasource:
-    url: jdbc:mysql://localhost:3306/queryman?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    url: jdbc:mysql://218.80.251.194:3316/queryman?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     driverClassName: com.mysql.jdbc.Driver
-    password: root
+    password: Epass/9108
     maxActive: 50
     type: com.alibaba.druid.pool.DruidDataSource
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/queryman?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+#    username: root
+#    driverClassName: com.mysql.jdbc.Driver
+#    password: root
+#    maxActive: 50
+#    type: com.alibaba.druid.pool.DruidDataSource
 
 
 

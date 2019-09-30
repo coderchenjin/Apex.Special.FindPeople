@@ -1,6 +1,9 @@
 package com.special.team.modular.controller;
 
+import cn.hutool.http.HttpUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.special.team.modular.Service.IndexService;
+import com.special.team.modular.constant.Constant;
 import com.special.team.modular.constant.SuccessResponseData;
 import com.special.team.modular.vo.HotVo;
 import com.special.team.modular.vo.ResultVo;
@@ -19,6 +22,29 @@ public class IndexController {
 
     @Autowired
     private IndexService indexService;
+
+
+    /**
+     * 微信授权
+     */
+    @RequestMapping(value = "/weChatAuthorization")
+    @ResponseBody
+    public Object weChatAuthorization(String code) {
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + Constant.APP_ID +
+                "&secret=" + Constant.APP_SECRET + "&js_code=" + code + "&grant_type=authorization_code";
+        String packages = HttpUtil.get(url);
+        if(packages!=null&&packages!=""){
+            JSONObject jo = JSONObject.parseObject(packages);
+            if(jo.get("errcode") != null) {
+                return "";
+            } else {
+                String openid = jo.get("openid").toString();
+                String str= openid.replace("\"", "");
+                return openid;
+            }
+        }
+        return new SuccessResponseData(200,"success",null);
+    }
 
     /**
      * 热搜
@@ -39,5 +65,7 @@ public class IndexController {
         ResultVo vo = indexService.seach(id);
         return new SuccessResponseData(200,"success",vo);
     }
+
+
 
 }

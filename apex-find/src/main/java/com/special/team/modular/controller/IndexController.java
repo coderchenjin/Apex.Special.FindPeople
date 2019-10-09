@@ -8,7 +8,9 @@ import com.special.team.modular.constant.Constant;
 import com.special.team.modular.constant.ErrorResponseData;
 import com.special.team.modular.constant.SuccessResponseData;
 import com.special.team.modular.dao.UserMapper;
+import com.special.team.modular.dao.WeChatUserMapper;
 import com.special.team.modular.model.User;
+import com.special.team.modular.model.WeChatUser;
 import com.special.team.modular.vo.HotVo;
 import com.special.team.modular.vo.ResultVo;
 import org.slf4j.Logger;
@@ -29,8 +31,12 @@ public class IndexController {
 
     @Autowired
     private IndexService indexService;
+
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private WeChatUserMapper weChatUserMapper;
 
 
     /**
@@ -38,7 +44,7 @@ public class IndexController {
      */
     @RequestMapping(value = "/weChatAuthorization")
     @ResponseBody
-    public Object weChatAuthorization(String code,String name,String tel) {
+    public Object weChatAuthorization(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + Constant.APP_ID +
                 "&secret=" + Constant.APP_SECRET + "&js_code=" + code + "&grant_type=authorization_code";
         String packages = HttpUtil.get(url);
@@ -50,9 +56,12 @@ public class IndexController {
             } else {
                 String openid = jo.get("openid").toString();
                 String str= openid.replace("\"", "");
-                User user=new User();
-                user.setOpenId(str);
-                userMapper.update(user,new EntityWrapper<User>().eq("Name",name).and().eq("Tel",tel));
+                List<WeChatUser> chatUsers = weChatUserMapper.selectList(new EntityWrapper<WeChatUser>().eq("open_id", str));
+                if(chatUsers==null||chatUsers.size()<0){
+                    WeChatUser wu=new WeChatUser();
+                    wu.setOpenId(str);
+                    weChatUserMapper.insert(wu);
+                }
                 return new SuccessResponseData(200,"success",openid);
             }
         }else{
@@ -73,7 +82,7 @@ public class IndexController {
     }
 
     /**
-     * 热搜
+     * 搜索
      */
     @RequestMapping(value = "/seach")
     @ResponseBody

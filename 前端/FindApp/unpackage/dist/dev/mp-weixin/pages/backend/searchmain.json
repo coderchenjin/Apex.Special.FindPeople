@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "搜索",
+  "navigationBarBackgroundColor": "#1377E3",
+  "usingComponents": {
+    "segmented-control": "/components/segmented-control"
+  }
+}

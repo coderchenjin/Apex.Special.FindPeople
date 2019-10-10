@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/QS-WavesButton/QS-WavesButton":1,"components/QS-WavesButton/uni-icon":1};
+/******/ 		var cssChunks = {"components/QS-WavesButton/QS-WavesButton":1,"components/segmented-control":1,"components/QS-WavesButton/uni-icon":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/QS-WavesButton/QS-WavesButton":"components/QS-WavesButton/QS-WavesButton","components/QS-WavesButton/uni-icon":"components/QS-WavesButton/uni-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/QS-WavesButton/QS-WavesButton":"components/QS-WavesButton/QS-WavesButton","components/segmented-control":"components/segmented-control","components/QS-WavesButton/uni-icon":"components/QS-WavesButton/uni-icon"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

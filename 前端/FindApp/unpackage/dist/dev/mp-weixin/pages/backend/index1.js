@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var QSWavesButton = function QSWavesButton() {return Promise.all(/*! import() | components/QS-WavesButton/QS-WavesButton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/QS-WavesButton/QS-WavesButton")]).then(__webpack_require__.bind(null, /*! @/components/QS-WavesButton/QS-WavesButton.vue */ 35));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var QSWavesButton = function QSWavesButton() {return Promise.all(/*! import() | components/QS-WavesButton/QS-WavesButton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/QS-WavesButton/QS-WavesButton")]).then(__webpack_require__.bind(null, /*! @/components/QS-WavesButton/QS-WavesButton.vue */ 43));};var _default =
 
 
 
@@ -130,13 +130,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       AddClass: false,
       clickUrl: false,
-      btnList: [
-      {
+      btnList: [{
         type: 'default',
-        txt: '搜索首页',
+        txt: '搜索入口',
         disabled: false,
         plain: true },
 
+      {
+        type: 'default',
+        txt: '搜索主页',
+        disabled: false,
+        plain: true },
 
       {
         type: 'default',
@@ -168,10 +172,10 @@ __webpack_require__.r(__webpack_exports__);
       this.AddClass = true;
       if (text == '入库收货') {
         Url = '/pages/backend/intowarehouse';
-      } else if (text == '搜索首页') {
+      } else if (text == '搜索入口') {
         Url = '/pages/backend/searchhome';
-      } else if (text == '还大包') {
-        Url = '/pages/backend/returnbigbags';
+      } else if (text == '搜索主页') {
+        Url = '/pages/backend/searchmain';
       } else if (text == '移库') {
         Url = '/pages/backend/movegoods';
       } else if (text == '发货出库') {

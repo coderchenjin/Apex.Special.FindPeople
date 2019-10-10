@@ -1,0 +1,18 @@
+
+.input-class {
+	width: 90%;
+	height: 30px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 10px;
+	border: 1px solid #0e141a;
+	line-height: 50px;
+	border-radius: 10px;
+}
+.Textclass {
+	font-size: 80%;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	float: right;
+}
+

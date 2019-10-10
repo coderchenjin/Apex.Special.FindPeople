@@ -6,7 +6,7 @@
 				 confirm-type="search" @confirm="big_confirm" @focus="focus_big" style="float:left;" />
 			</view>
 			<view style="height: 10px;"></view>
-			<view style="height: 50%;width: 100%;" class="uni-padding-wrap uni-common-mt">
+<!-- 			<view style="height: 50%;width: 100%;" class="uni-padding-wrap uni-common-mt">
 				<view style="float:right;margin-right: 5%;">清空</view>
 				<view style="margin-left: 5%;">搜索历史</view>
 
@@ -14,7 +14,7 @@
 				<view><button type="default" size="mini">页面主操作 Disabled</button></view>
 				<view><button type="default" size="mini">页面主操作 Disabled</button></view>
 
-			</view>
+			</view> -->
 
 
 			<view style="clear: both;"></view>

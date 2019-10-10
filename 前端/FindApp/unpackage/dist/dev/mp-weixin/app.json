@@ -2,7 +2,8 @@
   "pages": [
     "pages/zaizai-login/index",
     "pages/backend/index1",
-    "pages/backend/searchhome"
+    "pages/backend/searchhome",
+    "pages/backend/searchmain"
   ],
   "subPackages": [],
   "window": {

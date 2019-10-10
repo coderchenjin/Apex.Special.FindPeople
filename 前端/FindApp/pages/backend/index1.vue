@@ -23,14 +23,18 @@
 			return {
 				AddClass: false,
 				clickUrl: false,
-				btnList: [
-					{
+				btnList: [{
 						type: 'default',
-						txt: '搜索首页',
+						txt: '搜索入口',
 						disabled: false,
 						plain: true,
 					},
-
+					{
+						type: 'default',
+						txt: '搜索主页',
+						disabled: false,
+						plain: true,
+					},
 					{
 						type: 'default',
 						txt: '退出',
@@ -61,10 +65,10 @@
 				this.AddClass = true;
 				if (text == '入库收货') {
 					Url = '/pages/backend/intowarehouse';
-				} else if (text == '搜索首页') {
+				} else if (text == '搜索入口') {
 					Url = '/pages/backend/searchhome';
-				} else if (text == '还大包') {
-					Url = '/pages/backend/returnbigbags';
+				} else if (text == '搜索主页') {
+					Url = '/pages/backend/searchmain';
 				} else if (text == '移库') {
 					Url = '/pages/backend/movegoods';
 				} else if (text == '发货出库') {
@@ -76,7 +80,7 @@
 						key: 'userName',
 						data: '',
 					});
-					
+
 					uni.setStorage({
 						key: 'token',
 						data: '',

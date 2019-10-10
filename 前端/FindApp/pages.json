@@ -5,7 +5,7 @@
 			"style": {
 				"navigationBarTitleText": ""
 			}
-		 },
+		},
 		// {
 		// 	"path": "pages/zaizai-login/test",
 		// 	"style": {
@@ -18,27 +18,50 @@
 		// 		"navigationBarTitleText": ""
 		// 	}
 		// },
-		 {
+		{
 			"path": "pages/backend/index1",
 			"style": {
 				"navigationBarTitleText": "",
-				"app-plus":{
-					"titleNView":{
-						"autoBackButton":false
+				"app-plus": {
+					"titleNView": {
+						"autoBackButton": false
 					}
 				}
 			}
 		},
-		
+
 		{
 			"path": "pages/backend/searchhome",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "搜索"
+			}
+		}, {
+			"path": "pages/backend/searchmain",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"navigationBarBackgroundColor": "#1377E3",
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"buttons": [{
+							"text": "取消",
+							"fontSize": "16",
+							"float": "right",
+							"color": "#fff"
+						}],
+						"searchInput": {
+							"align": "center",
+							"placeholder": "搜索人名、项目",
+							"borderRadius": "50upx",
+							"backgroundColor": "#fff"
+						}
+					}
+				}
+
 			}
 		}
-			
-				
-		
+
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

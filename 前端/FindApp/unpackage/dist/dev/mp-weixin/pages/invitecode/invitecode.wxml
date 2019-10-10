@@ -1,0 +1,1 @@
+<view><input class="zai-input" placeholder-class placeholder="请输入邀请码" data-event-opts="{{[['input',[['__set_model',['','Invite_Code','$event',[]]]]]]}}" value="{{Invite_Code}}" bindinput="__e"/><button data-event-opts="{{[['tap',[['Submit',['$event']]]]]}}" class="zai-btn button-style" bindtap="__e">提交</button></view>

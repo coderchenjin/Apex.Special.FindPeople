@@ -7662,9 +7662,10 @@ createPage(_searchmain.default);
   !*** D:/work/顺普/Apex.Special.FindPeople/前端/FindApp/pages.json ***!
   \****************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nSyntaxError: Unexpected token < in JSON at position 1313\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\json.js:17:20)\n    at parsePagesJson (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\pages.js:39:27)\n    at Object.module.exports (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index-new.js:45:21)\n    at Object.module.exports (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index.js:25:35)");
+"use strict";
+
 
 /***/ }),
 
@@ -7684,6 +7685,40 @@ var _default = {
 
   usingComponents: true // 是否使用自定义组件模式
 };exports.default = _default;
+
+/***/ }),
+
+/***/ 73:
+/*!***************************************************************************************************!*\
+  !*** D:/work/顺普/Apex.Special.FindPeople/前端/FindApp/main.js?{"page":"pages%2Finvitecode%2Findex"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/invitecode/index.vue */ 74));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_index.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 81:
+/*!********************************************************************************************************!*\
+  !*** D:/work/顺普/Apex.Special.FindPeople/前端/FindApp/main.js?{"page":"pages%2Finvitecode%2Finvitecode"} ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _invitecode = _interopRequireDefault(__webpack_require__(/*! ./pages/invitecode/invitecode.vue */ 82));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_invitecode.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })
 

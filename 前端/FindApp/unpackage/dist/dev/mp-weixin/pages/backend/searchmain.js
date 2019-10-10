@@ -158,6 +158,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     segmentedControl: segmentedControl },
@@ -177,6 +188,13 @@ __webpack_require__.r(__webpack_exports__);
       icon: '搜索人名、项目',
       items: ['全部', '联系人', '部门', '项目'],
       current: 0,
+      hotdata: [{
+        "id": "b5485dc5da9f11e990ae00155d05700a",
+        "name": "任涛" },
+      {
+        "id": "b5486415da9f11e990ae00155d05700a",
+        "name": "陶方涛" }],
+
       data: [_defineProperty({
         'name': '张三峰',
         'nameEn': 'sanfeng.zhang',
@@ -262,52 +280,89 @@ __webpack_require__.r(__webpack_exports__);
             this.projectshow = 'display:block';
           }
       }
-    } },
+    },
 
-  onNavigationBarButtonTap: function onNavigationBarButtonTap() {
-    console.log("你点击了按钮");
-  },
-  onNavigationBarSearchInputChanged: function onNavigationBarSearchInputChanged() {
-    console.log("你输入了信息");
-  },
-  big_confirm: function big_confirm() {var _this = this;
-
-    var big = this.big.trim();
-    console.log('该大包：' + this.big);
-    if (big.length < 1) {
-      this.ErrorRemind = "请输入人名或项目名";
-      return;
-    }
-    var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big;
-    this.bigfocus = false;
-    uni.request({
-      url: Url,
-      method: 'GET',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //自定义请求头信息
-      },
-      success: function success(res) {
-        _this.ErrorRemind = '';
-
-        if (res.data.code == '200') {
-          _this.ErrorRemind = '';
-          _this.data = res.data.data;
-
-          console.log(_this.TotalInpectionBig);
-        } else {
-          _this.bigfocus = true;
-          _this.ErrorRemind = res.data.message;
-
-        }
-      },
-      fail: function fail(failres) {
-        _this.ErrorRemind = "请求异常";
+    onNavigationBarButtonTap: function onNavigationBarButtonTap() {
+      console.log("你点击了按钮");
+    },
+    onNavigationBarSearchInputChanged: function onNavigationBarSearchInputChanged() {
+      console.log("你输入了信息");
+    },
+    big_input: function big_input(event) {var _this = this;
+      var big = this.big.trim();
+      console.log('该大包：' + this.big);
+      // console.log('该大包：' + event.target.value);
+      if (big.length < 1) {
+        this.ErrorRemind = "请输入人名或项目名";
         return;
-      },
-      complete: function complete() {} });
+      }
+      var Url = 'http://218.80.251.194:7788/index/hotSeach?name=' + big;
+      this.bigfocus = false;
+      uni.request({
+        url: Url,
+        method: 'GET',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //自定义请求头信息
+        },
+        success: function success(res) {
+          _this.ErrorRemind = '';
+
+          if (res.data.code == '200') {
+            _this.ErrorRemind = '';
+            _this.hotdata = res.data.data;
+
+            // console.log(this.hotdata);
+          } else {
+            _this.bigfocus = true;
+            _this.ErrorRemind = res.data.message;
+
+          }
+        },
+        fail: function fail(failres) {
+          _this.ErrorRemind = "请求异常";
+          return;
+        },
+        complete: function complete() {} });
+
+    },
+    big_confirm: function big_confirm() {var _this2 = this;
+
+      var big = this.big.trim();
+      console.log('该大包：' + this.big);
+      if (big.length < 1) {
+        this.ErrorRemind = "请输入人名或项目名";
+        return;
+      }
+      var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big;
+      this.bigfocus = false;
+      uni.request({
+        url: Url,
+        method: 'GET',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' //自定义请求头信息
+        },
+        success: function success(res) {
+          _this2.ErrorRemind = '';
+
+          if (res.data.code == '200') {
+            _this2.ErrorRemind = '';
+            _this2.data = res.data.data;
+
+            console.log(_this2.TotalInpectionBig);
+          } else {
+            _this2.bigfocus = true;
+            _this2.ErrorRemind = res.data.message;
+
+          }
+        },
+        fail: function fail(failres) {
+          _this2.ErrorRemind = "请求异常";
+          return;
+        },
+        complete: function complete() {} });
 
 
-  } };exports.default = _default;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

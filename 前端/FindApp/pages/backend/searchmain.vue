@@ -2,9 +2,20 @@
 	<view>
 		<view style="top:10px">
 			<input class="uni-input input-class" placeholder-class :placeholder="icon" v-model="big" :focus="bigfocus"
-			 confirm-type="search" @confirm="big_confirm" @focus="focus_big" style="float:left;" />
-			 <view ref="warn_remind" :class="[ErrorRemind.length == 0 ? 'remind_none' : 'remind_display']" style="font-family: '楷体';margin-left: 7%;margin-top: 10px">{{ErrorRemind}}</view>
-			 
+			 confirm-type="search" @input="big_input" @confirm="big_confirm" style="float:left;" />
+			<view ref="warn_remind" :class="[ErrorRemind.length == 0 ? 'remind_none' : 'remind_display']" style="font-family: '楷体';margin-left: 7%;margin-top: 10px">{{ErrorRemind}}</view>
+
+		</view>
+		<view>
+			<view class="listhot">
+				<view v-for="(item,i) in hotdata" :id="item.id">
+
+					<label style="margin-left: 30px;color: #A0A0A0;size: 14px;">{{item.name}}</label>
+
+					<view style="height:1px;background:#E5E5E5;margin:10px 0"></view>
+				</view>
+
+			</view>
 		</view>
 		<view>
 			<segmented-Control id="tabbar" :values="items" :stickyTop="108" :current="current" @clickItem="onClickItem"></segmented-Control>
@@ -63,13 +74,20 @@
 			this.ErrorRemind = '';
 
 			// this.data = [];
-		
+
 		},
 		data() {
 			return {
 				icon: '搜索人名、项目',
 				items: ['全部', '联系人', '部门', '项目'],
 				current: 0,
+				hotdata: [{
+					"id": "b5485dc5da9f11e990ae00155d05700a",
+					"name": "任涛"
+				}, {
+					"id": "b5486415da9f11e990ae00155d05700a",
+					"name": "陶方涛"
+				}],
 				data: [{
 					'name': '张三峰',
 					'nameEn': 'sanfeng.zhang',
@@ -155,23 +173,23 @@
 						this.projectshow = 'display:block';
 					}
 				}
-			}
-		},
-		onNavigationBarButtonTap() {
-			console.log("你点击了按钮")
-		},
-		onNavigationBarSearchInputChanged() {
-			console.log("你输入了信息")
-		},
-		big_confirm() {
+			},
 
+			onNavigationBarButtonTap() {
+				console.log("你点击了按钮")
+			},
+			onNavigationBarSearchInputChanged() {
+				console.log("你输入了信息")
+			},
+			big_input: function(event) {
 				var big = this.big.trim();
 				console.log('该大包：' + this.big);
+				// console.log('该大包：' + event.target.value);
 				if (big.length < 1) {
-					this.ErrorRemind="请输入人名或项目名";
+					this.ErrorRemind = "请输入人名或项目名";
 					return;
 				}
-				var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big ;
+				var Url ='http://218.80.251.194:7788/index/hotSeach?name=' + big;
 				this.bigfocus = false;
 				uni.request({
 					url: Url,
@@ -184,13 +202,50 @@
 
 						if (res.data.code == '200') {
 							this.ErrorRemind = '';
-							this.data=res.data.data;
+							this.hotdata = res.data.data;
+
+							// console.log(this.hotdata);
+						} else {
+							this.bigfocus = true;
+							this.ErrorRemind = res.data.message;
+
+						}
+					},
+					fail: failres => {
+						this.ErrorRemind = "请求异常";
+						return;
+					},
+					complete: () => {}
+				});
+			},
+			big_confirm() {
+
+				var big = this.big.trim();
+				console.log('该大包：' + this.big);
+				if (big.length < 1) {
+					this.ErrorRemind = "请输入人名或项目名";
+					return;
+				}
+				var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big;
+				this.bigfocus = false;
+				uni.request({
+					url: Url,
+					method: 'GET',
+					header: {
+						'content-type': 'application/x-www-form-urlencoded' //自定义请求头信息
+					},
+					success: res => {
+						this.ErrorRemind = '';
+
+						if (res.data.code == '200') {
+							this.ErrorRemind = '';
+							this.data = res.data.data;
 
 							console.log(this.TotalInpectionBig);
 						} else {
-						    this.bigfocus = true;
+							this.bigfocus = true;
 							this.ErrorRemind = res.data.message;
-					
+
 						}
 					},
 					fail: failres => {
@@ -201,10 +256,19 @@
 				});
 
 			}
-		
+		}
 	};
 </script>
 <style>
+	.listhot {
+		position: absolute;
+		top: 48px;
+		z-index: 99999999;
+		background-color: white;
+		width: 100%;
+
+	}
+
 	.input-class {
 		width: 90%;
 		height: 30px;

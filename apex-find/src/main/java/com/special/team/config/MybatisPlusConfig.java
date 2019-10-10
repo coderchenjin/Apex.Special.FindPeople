@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 //@Order(2)
-@MapperScan(basePackages = {"com.special.team.modular.dao"})
+@MapperScan(basePackages = {"com.special.team.*.dao"})
 public class MybatisPlusConfig {
 
     @Autowired
@@ -82,10 +82,10 @@ public class MybatisPlusConfig {
     /**
      * mybatis-plus分页插件
      */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
-    }
+//    @Bean
+//    public PaginationInterceptor paginationInterceptor() {
+//        return new PaginationInterceptor();
+//    }
 
     /**
      * 数据范围mybatis插件
@@ -98,9 +98,9 @@ public class MybatisPlusConfig {
     /**
      * 乐观锁mybatis插件
      */
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
-    }
+//    @Bean
+//    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+//        return new OptimisticLockerInterceptor();
+//    }
 
 }

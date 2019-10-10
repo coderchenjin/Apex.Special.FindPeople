@@ -4,42 +4,63 @@
 
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.special.team.modular.model.User">
-		<id column="id" property="id" />
-		<result column="avatar" property="avatar" />
-		<result column="account" property="account" />
-		<result column="password" property="password" />
-		<result column="salt" property="salt" />
-		<result column="name" property="name" />
-		<result column="birthday" property="birthday" />
-		<result column="sex" property="sex" />
-		<result column="email" property="email" />
-		<result column="phone" property="phone" />
-		<result column="roleid" property="roleid" />
-		<result column="deptid" property="deptid" />
-		<result column="companyId" property="companyId" />
-		<result column="status" property="status" />
-		<result column="createtime" property="createtime" />
-		<result column="version" property="version" />
-		<result column="ismanager" property="ismanager" />
-		<result column="fngroup" property="fngroup" />
-		<result column="hp_type" property="hpType" />
-		<result column="hp_consignee_name" property="hpConsigneeName" />
+		<result column="Id" property="Id" />
+		<result column="Name" property="Name" />
+		<result column="NameEn" property="NameEn" />
+		<result column="Email" property="Email" />
+		<result column="Tel" property="Tel" />
+		<result column="Company" property="Company" />
+		<result column="Department" property="Department" />
+		<result column="DepartmentBranch" property="DepartmentBranch" />
+		<result column="Position" property="Position" />
+		<result column="WorkingLocation" property="WorkingLocation" />
+		<result column="DirectNumber" property="DirectNumber" />
+		<result column="ExtensionNumber" property="ExtensionNumber" />
+		<result column="Introduction" property="Introduction" />
+		<result column="Status" property="Status" />
+		<result column="Activated" property="Activated" />
+		<result column="OpenId" property="OpenId" />
 	</resultMap>
 
+	<!-- 通用查询结果列 -->
 	<sql id="Base_Column_List">
-		id, account, name, birthday, sex, email, avatar,
-		phone, roleid,companyId,
-		deptid, status,
-		createtime, version,ismanager,fngroup,hp_type as hpType,hp_consignee_name as hpConsigneeName
-	</sql>
+        Id, `Name`, NameEn, Email, Tel, Company, Department, DepartmentBranch, `Position`, WorkingLocation, DirectNumber, ExtensionNumber, Introduction, Status, Activated, OpenId
+    </sql>
 
-	<sql id="Base_Column_List_With_Pwd">
-		id, account, name, birthday,password, sex, email, avatar,
-		phone, roleid,companyId,salt,
-		deptid, status,
-		createtime, version,ismanager,fngroup
-	</sql>
+	<select id="selectHot" resultType="com.special.team.modular.vo.HotVo">
+       SELECT
+			u.Id AS id,
+			u.`Name` AS `name`
+		FROM
+			`s_user` u
+		WHERE
+			Id IN ( SELECT UserId FROM s_userproject WHERE ProjectId IN ( SELECT Id FROM s_project WHERE ProjectName LIKE CONCAT('%',#{key},'%') ) )
+    </select>
 
+	<select id="selectHot1" resultType="com.special.team.modular.vo.HotVo">
+       SELECT
+			Id AS id,
+			`Name` AS `name`
+		FROM
+			`s_user` u
+		WHERE `Name` LIKE CONCAT('%',#{key},'%')
 
+    </select>
+
+	<select id="selectUserById" resultType="com.special.team.modular.vo.ResultVo">
+       SELECT
+			Id AS id,
+			`Name` AS `name`,
+			NameEn AS nameEn,
+			Email AS email,
+			Tel AS tel,
+			Company AS company,
+			`Position` AS `position`,
+			`Status` AS `status`
+		FROM
+			`s_user`
+		WHERE `Id`=#{id}
+
+    </select>
 
 </mapper>

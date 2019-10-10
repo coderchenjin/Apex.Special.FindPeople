@@ -7662,10 +7662,9 @@ createPage(_searchmain.default);
   !*** D:/work/顺普/Apex.Special.FindPeople/前端/FindApp/pages.json ***!
   \****************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nSyntaxError: Unexpected token < in JSON at position 1313\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\json.js:17:20)\n    at parsePagesJson (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\pages.js:39:27)\n    at Object.module.exports (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index-new.js:45:21)\n    at Object.module.exports (D:\\download\\HBuilderX.2.2.2.20190816.full\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index.js:25:35)");
 
 /***/ }),
 

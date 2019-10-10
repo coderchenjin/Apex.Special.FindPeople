@@ -1,6 +1,10 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages++
 		{
+			"path": "pages/invitecode/index"
+			
+		 },
+		{
 			"path": "pages/zaizai-login/index",
 			"style": {
 				"navigationBarTitleText": ""
@@ -60,9 +64,20 @@
 
 			}
 		}
+<<<<<<< HEAD
 
 
 	],
+=======
+			
+				
+		
+	    ,{
+            "path" : "pages/invitecode/invitecode",
+            "style" : {}
+        }
+    ],
+>>>>>>> 5c583d4db55d5ed69859f6d0d1606f6ce12c19b6
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

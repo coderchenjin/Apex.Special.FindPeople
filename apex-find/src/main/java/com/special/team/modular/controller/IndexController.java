@@ -57,7 +57,7 @@ public class IndexController {
                 String openid = jo.get("openid").toString();
                 String str= openid.replace("\"", "");
                 List<WeChatUser> chatUsers = weChatUserMapper.selectList(new EntityWrapper<WeChatUser>().eq("open_id", str));
-                if(chatUsers==null||chatUsers.size()<0){
+                if(chatUsers==null||chatUsers.size()==0){
                     WeChatUser wu=new WeChatUser();
                     wu.setOpenId(str);
                     weChatUserMapper.insert(wu);

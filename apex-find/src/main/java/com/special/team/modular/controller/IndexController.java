@@ -44,29 +44,40 @@ public class IndexController {
      */
     @RequestMapping(value = "/weChatAuthorization")
     @ResponseBody
-    public Object weChatAuthorization(String code) {
-        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + Constant.APP_ID +
-                "&secret=" + Constant.APP_SECRET + "&js_code=" + code + "&grant_type=authorization_code";
-        String packages = HttpUtil.get(url);
-        if(packages!=null&&packages!=""){
-            JSONObject jo = JSONObject.parseObject(packages);
-            if(jo.get("errcode") != null) {
-                logger.info("登录授权失败："+packages);
-                return new ErrorResponseData(500,"failed",jo.get("errmsg"));
-            } else {
-                String openid = jo.get("openid").toString();
-                String str= openid.replace("\"", "");
-                List<WeChatUser> chatUsers = weChatUserMapper.selectList(new EntityWrapper<WeChatUser>().eq("open_id", str));
-                if(chatUsers==null||chatUsers.size()==0){
-                    WeChatUser wu=new WeChatUser();
-                    wu.setOpenId(str);
-                    weChatUserMapper.insert(wu);
+    public Object weChatAuthorization(String code,String name) {
+        List<User> userList = userMapper.selectList(new EntityWrapper<User>().eq("Name", name));
+        if(userList!=null&&userList.size()>0){
+            String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + Constant.APP_ID +
+                    "&secret=" + Constant.APP_SECRET + "&js_code=" + code + "&grant_type=authorization_code";
+            String packages = HttpUtil.get(url);
+            if(packages!=null&&packages!=""){
+                JSONObject jo = JSONObject.parseObject(packages);
+                if(jo.get("errcode") != null) {
+                    logger.info("登录授权失败："+packages);
+                    return new ErrorResponseData(500,"failed",jo.get("errmsg"));
+                } else {
+                    String openid = jo.get("openid").toString();
+                    String str= openid.replace("\"", "");
+//                    List<WeChatUser> chatUsers = weChatUserMapper.selectList(new EntityWrapper<WeChatUser>().eq("open_id", str));
+//                    if(chatUsers==null||chatUsers.size()==0){
+//                        WeChatUser wu=new WeChatUser();
+//                        wu.setOpenId(str);
+//                        weChatUserMapper.insert(wu);
+//                    }
+                    User user=userList.get(0);
+                    if(user.getOpenId()==null||user.getOpenId()==""){
+                        user.setOpenId(str);
+                        userMapper.updateById(user);
+                    }
+                    return new SuccessResponseData(200,"success",openid);
                 }
-                return new SuccessResponseData(200,"success",openid);
+            }else{
+                logger.info("登录授权失败："+packages);
+                return new ErrorResponseData(500,"failed","授权失败");
             }
         }else{
-            logger.info("登录授权失败："+packages);
-            return new ErrorResponseData(500,"failed","授权失败");
+            logger.info("登录授权失败，该用户不存在");
+            return new ErrorResponseData(400,"该用户不存在","");
         }
 
     }

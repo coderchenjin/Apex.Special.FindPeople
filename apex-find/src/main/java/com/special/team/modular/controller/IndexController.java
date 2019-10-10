@@ -65,10 +65,8 @@ public class IndexController {
 //                        weChatUserMapper.insert(wu);
 //                    }
                     User user=userList.get(0);
-                    if(user.getOpenId()==null||user.getOpenId()==""){
-                        user.setOpenId(str);
-                        userMapper.updateById(user);
-                    }
+                    user.setOpenId(str);
+                    userMapper.updateById(user);
                     return new SuccessResponseData(200,"success",openid);
                 }
             }else{

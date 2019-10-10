@@ -2,7 +2,7 @@
 	<view>
 		<view style="top:10px">
 			<input class="uni-input input-class" placeholder-class :placeholder="icon" v-model="big" :focus="bigfocus"
-			 confirm-type="search" @input="big_input" @confirm="big_confirm" style="float:left;" />
+			 confirm-type="search" @input="big_input" style="float:left;" />
 			<view ref="warn_remind" :class="[ErrorRemind.length == 0 ? 'remind_none' : 'remind_display']" style="font-family: '楷体';margin-left: 7%;margin-top: 10px">{{ErrorRemind}}</view>
 
 		</view>
@@ -10,7 +10,7 @@
 			<view class="listhot">
 				<view v-for="(item,i) in hotdata" :id="item.id">
 
-					<label style="margin-left: 30px;color: #A0A0A0;size: 14px;">{{item.name}}</label>
+					<label @click="big_confirm(item.id)" :id="item.id" style="margin-left: 30px;color: #A0A0A0;size: 14px;">{{item.name}}</label>
 
 					<view style="height:1px;background:#E5E5E5;margin:10px 0"></view>
 				</view>
@@ -73,8 +73,8 @@
 
 			this.ErrorRemind = '';
 
-			// this.data = [];
-
+			this.data = [];
+			this.hotdata = [];
 		},
 		data() {
 			return {
@@ -187,9 +187,10 @@
 				// console.log('该大包：' + event.target.value);
 				if (big.length < 1) {
 					this.ErrorRemind = "请输入人名或项目名";
+					this.hotdata = [];
 					return;
 				}
-				var Url ='http://218.80.251.194:7788/index/hotSeach?name=' + big;
+				var Url = 'http://218.80.251.194:7788/index/hotSeach?name=' + big;
 				this.bigfocus = false;
 				uni.request({
 					url: Url,
@@ -218,15 +219,10 @@
 					complete: () => {}
 				});
 			},
-			big_confirm() {
+			big_confirm(id) {
+				console.log('id：' + id);
 
-				var big = this.big.trim();
-				console.log('该大包：' + this.big);
-				if (big.length < 1) {
-					this.ErrorRemind = "请输入人名或项目名";
-					return;
-				}
-				var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big;
+				var Url = 'http://218.80.251.194:7788/index/seach?id=' + id;
 				this.bigfocus = false;
 				uni.request({
 					url: Url,
@@ -236,12 +232,13 @@
 					},
 					success: res => {
 						this.ErrorRemind = '';
-
+						this.hotdata = [];
 						if (res.data.code == '200') {
 							this.ErrorRemind = '';
-							this.data = res.data.data;
+							this.data=[];
+							this.data.push(res.data.data);
 
-							console.log(this.TotalInpectionBig);
+							console.log(res.data.data);
 						} else {
 							this.bigfocus = true;
 							this.ErrorRemind = res.data.message;

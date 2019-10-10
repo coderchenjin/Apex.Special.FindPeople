@@ -1,0 +1,32 @@
+
+.zai-input {
+	background: #e2f5fc;
+	margin-top: 30rpx;
+	border-radius: 100rpx;
+	padding: 20rpx 40rpx;
+	font-size: 36rpx;
+	margin-top: 50rpx;
+}
+.input-placeholder,
+.zai-input {
+	color: #94afce;
+}
+.zai-btn {
+	background: #ff65a3;
+	color: #fff;
+	border: 0;
+	border-radius: 100rpx;
+	font-size: 36rpx;
+	margin-top: 50rpx;
+}
+.zai-btn:after {
+	border: 0;
+}
+
+/*按钮点击效果*/
+.zai-btn.button-hover {
+	-webkit-transform: translate(1rpx, 1rpx);
+	    -ms-transform: translate(1rpx, 1rpx);
+	        transform: translate(1rpx, 1rpx);
+}
+

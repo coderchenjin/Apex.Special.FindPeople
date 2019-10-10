@@ -3,7 +3,9 @@
     "pages/zaizai-login/index",
     "pages/backend/index1",
     "pages/backend/searchhome",
-    "pages/backend/searchmain"
+    "pages/backend/searchmain",
+    "pages/invitecode/index",
+    "pages/invitecode/invitecode"
   ],
   "subPackages": [],
   "window": {

@@ -34,6 +34,12 @@
 						txt: '搜索主页',
 						disabled: false,
 						plain: true,
+					},	
+						{
+						type: 'default',
+						txt: '邀请码',
+						disabled: false,
+						plain: true,
 					},
 					{
 						type: 'default',
@@ -69,8 +75,8 @@
 					Url = '/pages/backend/searchhome';
 				} else if (text == '搜索主页') {
 					Url = '/pages/backend/searchmain';
-				} else if (text == '移库') {
-					Url = '/pages/backend/movegoods';
+				} else if (text == '邀请码') {
+					Url = '/pages/invitecode/index';
 				} else if (text == '发货出库') {
 					Url = '/pages/backend/outofwarehouse';
 				} else if (text == '退出') {

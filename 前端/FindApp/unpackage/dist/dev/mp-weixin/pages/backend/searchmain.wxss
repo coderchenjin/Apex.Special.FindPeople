@@ -1,4 +1,11 @@
 
+.listhot {
+	position: absolute;
+	top: 48px;
+	z-index: 99999999;
+	background-color: white;
+	width: 100%;
+}
 .input-class {
 	width: 90%;
 	height: 30px;

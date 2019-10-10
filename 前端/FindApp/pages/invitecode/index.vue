@@ -39,7 +39,7 @@
 					});
 					return;
 				}
-
+				let cuser=this.UserName;
 				uni.login({
 					provider: 'weixin',
 					success: function(res) {
@@ -47,23 +47,25 @@
 						uni.setStorageSync("findapp_wxcode", currentwxcode);
 						console.log('微信CODE' + currentwxcode)
 						uni.request({
-							url: 'http://zhaoren.wellwinyun.com/index/weChatAuthorization',
-							method: 'POST',
-							data: {
-								code: currentwxcode,
-							},
+							url: 'http://218.80.251.194:7788/index/weChatAuthorization?code='+res.code+'&name='+cuser,
+							method: 'GET',
 							success: result => {
 								console.log('登录成功' + result);
-								uni.navigateTo({
-									url: '../backend/searchhome'
-								});
-								if (result.any && result.code.any && result.code == '200') {
-									let openid = result.data;
+								var sucdata = result.data;
+								if (sucdata.code == '200') {
+									let openid = sucdata.data;
 									uni.setStorageSync("findapp_openid", openid);
 									uni.navigateTo({
 										url: '../backend/searchhome'
 									});
-								} else {
+								}else if(sucdata.code == '400'){
+									uni.showToast({
+										title: '用户不存在',
+										icon: 'none',
+										mask: false,
+										duration: 3000
+									});
+								}else{
 									uni.showToast({
 										title: '登录失败',
 										icon: 'none',
@@ -73,6 +75,7 @@
 								}
 							},
 							fail: failres => {
+								console.log('登录失败'+failres);
 								uni.showToast({
 									title: '登录失败',
 									icon: 'none',
@@ -94,7 +97,12 @@
 				})
 			}
 		},
-		onLoad() {},
+		onLoad() {
+			uni.setNavigationBarTitle({
+				title:'找人',
+			});
+			
+		},
 	}
 </script>
 

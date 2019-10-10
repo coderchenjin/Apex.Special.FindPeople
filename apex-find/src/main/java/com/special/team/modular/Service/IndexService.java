@@ -1,6 +1,5 @@
 package com.special.team.modular.Service;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.special.team.modular.dao.ProjectMapper;
 import com.special.team.modular.dao.UserMapper;
 import com.special.team.modular.model.Project;

@@ -1,8 +1,15 @@
 <template>
-	<view>
-		<view style="margin-left: 5%; ">请输入邀请码:</view>
-		<input class="zai-input" placeholder-class placeholder="请输入邀请码" v-model="Invite_Code" />
-		<button class="zai-btn button-style" @tap="Submit">提交</button>
+	<view style="margin: 40upx;">
+		<view class="invitecodebox">
+			<view style="margin: 100upx 10upx;">
+				<span class="iline ">用户名：</span><input class="zai-input iline" placeholder="请输入用户名" v-model="UserName" />
+			</view>
+		</view>
+		<view>
+			<button class="zai-btn button-style" @tap="Submit">登录</button>
+			<view style="height:400upx;width: 100%;background: url('/static/img/u2.png') no-repeat;background-size:100% 100%;">
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -12,92 +19,124 @@
 			return {
 				Invite_Code: '',
 				Is_Check: false,
+				error_User_remind: true,
 				User_Error: '',
-				WXCode:'',
+				WXCode: '',
+				UserName: '',
 			}
+
 		},
 		methods: {
-			check_code(e) {
-				var code = e.detail.value;
-				uni.request({
-					url: '',
-					method: 'POST',
-					data: {
-						wxcode:WXCode,
-						code: code
-					},
-					success: res => {
-						
-						//邀请码是否正确
-					}
-				})
-			},
-			
+
 			Submit(e) {
 
-				if (this.Invite_Code != "1234") {
-					this.User_Error = '请输入邀请码';
-				} else {
-					var Url = '/pages/backend/searchhome';
-					uni.navigateTo({
-						url: Url
+				if (this.UserName.length < 1) {
+					uni.showToast({
+						title: '请输入用户名',
+						icon: 'none',
+						mask: false,
+						duration: 3000
 					});
+					return;
 				}
+
+				uni.login({
+					provider: 'weixin',
+					success: function(res) {
+						let currentwxcode = res.code;
+						uni.setStorageSync("findapp_wxcode", currentwxcode);
+						console.log('微信CODE' + currentwxcode)
+						uni.request({
+							url: 'http://zhaoren.wellwinyun.com/index/weChatAuthorization',
+							method: 'POST',
+							data: {
+								code: currentwxcode,
+							},
+							success: result => {
+								console.log('登录成功' + result);
+								uni.navigateTo({
+									url: '../backend/searchhome'
+								});
+								if (result.any && result.code.any && result.code == '200') {
+									let openid = result.data;
+									uni.setStorageSync("findapp_openid", openid);
+									uni.navigateTo({
+										url: '../backend/searchhome'
+									});
+								} else {
+									uni.showToast({
+										title: '登录失败',
+										icon: 'none',
+										mask: false,
+										duration: 3000
+									});
+								}
+							},
+							fail: failres => {
+								uni.showToast({
+									title: '登录失败',
+									icon: 'none',
+									mask: false,
+									duration: 3000
+								});
+							},
+						})
+					},
+					fail(fdata) {
+						console.log('获取code失败');
+						uni.showToast({
+							title: '获取code失败',
+							icon: 'none',
+							mask: false,
+							duration: 3000
+						});
+					}
+				})
 			}
 		},
-		onLoad() {
-			console.log('邀请码页面加载---------------------------------')
-			uni.login({
-				provider: 'weixin',
-				success: function(res) {
-					let currentwxcode = res.code;
-					
-					console.log('微信CODE'+currentwxcode)
-					uni.request({
-						url: '',
-						method: 'POST',
-						data: {
-							code: currentwxcode,
-						},
-						success: res => {
-							if(res.any){
-								
-								var Url = '/pages/backend/searchhome';
-								uni.navigateTo({
-									url: Url
-								});
-							}
-						}
-					})
-				}
-			})
-						
-		},
+		onLoad() {},
 	}
 </script>
 
 <style>
+	.invitecodebox {
+		border: 1upx solid #006699;
+		padding: 20upx;
+		height: 400upx;
+	}
+
+	.iline {
+		display: inline-block;
+	}
+
+	.label {
+		margin-top: 10upx;
+		padding: 10upx 10upx;
+
+	}
+
 	.zai-input {
-		background: #e2f5fc;
-		margin-top: 30upx;
-		border-radius: 100upx;
-		padding: 20upx 40upx;
-		font-size: 36upx;
-		margin-top: 50upx;
+		background: #C8C7CC;
+
+
 	}
 
 	.input-placeholder,
 	.zai-input {
-		color: #94afce;
+		background: #C8C7CC;
+		border-radius: 1upx;
+		padding: 5upx 10px;
+		font-size: 36upx;
 	}
 
 	.zai-btn {
-		background: #ff65a3;
+		background: #006699;
 		color: #fff;
 		border: 0;
-		border-radius: 100upx;
+		border-radius: 20upx;
 		font-size: 36upx;
-		margin-top: 50upx;
+		margin-top: 20upx;
+
 	}
 
 	.zai-btn:after {

@@ -39,7 +39,7 @@
 					});
 					return;
 				}
-				let cuser=this.UserName;
+				let cuser = this.UserName;
 				uni.login({
 					provider: 'weixin',
 					success: function(res) {
@@ -47,7 +47,7 @@
 						uni.setStorageSync("findapp_wxcode", currentwxcode);
 						console.log('微信CODE' + currentwxcode)
 						uni.request({
-							url: 'http://218.80.251.194:7788/index/weChatAuthorization?code='+res.code+'&name='+cuser,
+							url: 'http://218.80.251.194:7788/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
 							method: 'GET',
 							success: result => {
 								console.log('登录成功' + result);
@@ -56,16 +56,16 @@
 									let openid = sucdata.data;
 									uni.setStorageSync("findapp_openid", openid);
 									uni.navigateTo({
-										url: '../backend/searchhome'
+										url: '../backend/searchmain'
 									});
-								}else if(sucdata.code == '400'){
+								} else if (sucdata.code == '400') {
 									uni.showToast({
 										title: '用户不存在',
 										icon: 'none',
 										mask: false,
 										duration: 3000
 									});
-								}else{
+								} else {
 									uni.showToast({
 										title: '登录失败',
 										icon: 'none',
@@ -75,7 +75,7 @@
 								}
 							},
 							fail: failres => {
-								console.log('登录失败'+failres);
+								console.log('登录失败' + failres);
 								uni.showToast({
 									title: '登录失败',
 									icon: 'none',
@@ -83,7 +83,10 @@
 									duration: 3000
 								});
 							},
-						})
+						});
+						// uni.navigateTo({
+						// 	url: '../backend/searchmain'
+						// });
 					},
 					fail(fdata) {
 						console.log('获取code失败');
@@ -97,11 +100,10 @@
 				})
 			}
 		},
-		onLoad() {
-			uni.setNavigationBarTitle({
-				title:'找人',
-			});
-			
+		onShow() {
+
+
+
 		},
 	}
 </script>
@@ -138,7 +140,7 @@
 	}
 
 	.zai-btn {
-		background: #006699;
+		background: #1377E3;
 		color: #fff;
 		border: 0;
 		border-radius: 20upx;

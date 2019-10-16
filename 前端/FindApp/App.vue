@@ -1,7 +1,16 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			console.log('App Launch');
+			uni.getStorage({
+							key:'findapp_openid',
+							success: function (res) {
+							        console.log("老用户"+res.data);
+									uni.navigateTo({
+										url: 'pages/backend/searchmain'
+									});
+							    }
+						});
 		},
 		onShow: function() {
 			console.log('App Show')

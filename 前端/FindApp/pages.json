@@ -1,9 +1,10 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages++
 		{
-			"path": "pages/zaizai-login/index",
+			"path": "pages/invitecode/index",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "找人",
+				"navigationBarBackgroundColor": "#1377E3"
 			}
 		},
 		// {
@@ -59,15 +60,7 @@
 				}
 
 			}
-		}						
-		,{
-		    "path" : "pages/invitecode/index",
-		    "style" : {}
-		}
-	    ,{
-            "path" : "pages/invitecode/invitecode",
-            "style" : {}
-        }
+		}	
     ],
 
 	"globalStyle": {

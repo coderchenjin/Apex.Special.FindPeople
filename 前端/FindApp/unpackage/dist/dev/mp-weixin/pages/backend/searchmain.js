@@ -180,8 +180,8 @@ __webpack_require__.r(__webpack_exports__);
 
     this.ErrorRemind = '';
 
-    // this.data = [];
-
+    this.data = [];
+    this.hotdata = [];
   },
   data: function data() {
     return {
@@ -294,6 +294,7 @@ __webpack_require__.r(__webpack_exports__);
       // console.log('该大包：' + event.target.value);
       if (big.length < 1) {
         this.ErrorRemind = "请输入人名或项目名";
+        this.hotdata = [];
         return;
       }
       var Url = 'http://218.80.251.194:7788/index/hotSeach?name=' + big;
@@ -325,15 +326,10 @@ __webpack_require__.r(__webpack_exports__);
         complete: function complete() {} });
 
     },
-    big_confirm: function big_confirm() {var _this2 = this;
+    big_confirm: function big_confirm(id) {var _this2 = this;
+      console.log('id：' + id);
 
-      var big = this.big.trim();
-      console.log('该大包：' + this.big);
-      if (big.length < 1) {
-        this.ErrorRemind = "请输入人名或项目名";
-        return;
-      }
-      var Url = this.$websiteUrl + '/api/mbag/getcheckcount?bagid=' + big;
+      var Url = 'http://218.80.251.194:7788/index/seach?id=' + id;
       this.bigfocus = false;
       uni.request({
         url: Url,
@@ -343,12 +339,13 @@ __webpack_require__.r(__webpack_exports__);
         },
         success: function success(res) {
           _this2.ErrorRemind = '';
-
+          _this2.hotdata = [];
           if (res.data.code == '200') {
             _this2.ErrorRemind = '';
-            _this2.data = res.data.data;
+            _this2.data = [];
+            _this2.data.push(res.data.data);
 
-            console.log(_this2.TotalInpectionBig);
+            console.log(res.data.data);
           } else {
             _this2.bigfocus = true;
             _this2.ErrorRemind = res.data.message;

@@ -2,12 +2,15 @@
 	<view style="margin: 40upx;">
 		<view class="invitecodebox">
 			<view style="margin: 100upx 10upx;">
-				<span class="iline ">用户名：</span><input class="zai-input iline" placeholder="请输入用户名" v-model="UserName" />
+				<span class="iline" style="text-align: center;">用户名：</span><Input class="zai-input iline" placeholder="请输入用户名"
+				 v-model="UserName" />
 			</view>
 		</view>
 		<view>
 			<button class="zai-btn button-style" @tap="Submit">登录</button>
-			<view style="height:400upx;width: 100%;background: url('/static/img/u2.png') no-repeat;background-size:100% 100%;">
+			<view style="height:400upx;width: 100%;">
+				<image src='../../static/img/u2.png' style="size:100% 100% ;">
+				</image>
 			</view>
 		</view>
 	</view>
@@ -84,9 +87,6 @@
 								});
 							},
 						});
-						// uni.navigateTo({
-						// 	url: '../backend/searchmain'
-						// });
 					},
 					fail(fdata) {
 						console.log('获取code失败');
@@ -100,11 +100,22 @@
 				})
 			}
 		},
-		onShow() {
+		onLoad() {
+			
+			uni.redirectTo({
+				url: '../backend/searchmain'
+			});
+			// uni.getStorage({
+			// 	key: 'findapp_openid',
+			// 	success: function(res) {
+			// 		console.log("老用户11111" + res.data);
+			// 		uni.navigateTo({
+			// 			url: './pages/backend/searchmain'
+			// 		});
+			// 	}
+			// });
 
-
-
-		},
+		}
 	}
 </script>
 
@@ -112,7 +123,7 @@
 	.invitecodebox {
 		border: 1upx solid #006699;
 		padding: 20upx;
-		height: 400upx;
+		height: 300upx;
 	}
 
 	.iline {
@@ -135,8 +146,9 @@
 	.zai-input {
 		background: #C8C7CC;
 		border-radius: 1upx;
-		padding: 5upx 10px;
+		padding: 5upx 0upx 5upx 0upx;
 		font-size: 36upx;
+		overflow: visible;
 	}
 
 	.zai-btn {

@@ -50,7 +50,7 @@
 						uni.setStorageSync("findapp_wxcode", currentwxcode);
 						console.log('微信CODE' + currentwxcode)
 						uni.request({
-							url: 'http://218.80.251.194:7788/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
+							url: 'https://zhaoren.wellwinyun.com/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
 							method: 'GET',
 							success: result => {
 								console.log('登录成功' + result);
@@ -58,7 +58,7 @@
 								if (sucdata.code == '200') {
 									let openid = sucdata.data;
 									uni.setStorageSync("findapp_openid", openid);
-									uni.navigateTo({
+									uni.redirectTo({
 										url: '../backend/searchmain'
 									});
 								} else if (sucdata.code == '400') {
@@ -101,20 +101,15 @@
 			}
 		},
 		onLoad() {
-			
-			uni.redirectTo({
-				url: '../backend/searchmain'
+			uni.getStorage({
+				key: 'findapp_openid',
+				success: function(res) {
+					console.log("老用户222222222" + res.data);
+					uni.redirectTo({
+						url: '../backend/searchmain'
+					});
+				}
 			});
-			// uni.getStorage({
-			// 	key: 'findapp_openid',
-			// 	success: function(res) {
-			// 		console.log("老用户11111" + res.data);
-			// 		uni.navigateTo({
-			// 			url: './pages/backend/searchmain'
-			// 		});
-			// 	}
-			// });
-
 		}
 	}
 </script>

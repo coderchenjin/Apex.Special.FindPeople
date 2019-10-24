@@ -186,6 +186,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     segmentedControl: segmentedControl },
@@ -199,9 +215,15 @@ __webpack_require__.r(__webpack_exports__);
 
     this.data = [];
     this.hotdata = [];
+    this.imageData = [{ "src": "src" }];
+  }, onShow: function onShow() {
+    this.bigfocus = true;
+
   },
   data: function data() {
     return {
+      bigfocus: true,
+      src: '/static/img/none.png',
       icon: '搜索人名、项目',
       items: ['全部', '联系人', '部门', '项目'],
       current: 0,
@@ -212,6 +234,7 @@ __webpack_require__.r(__webpack_exports__);
         "id": "b5486415da9f11e990ae00155d05700a",
         "name": "陶方涛" }],
 
+      imageData: [],
       data: [_defineProperty({
         'name': '张三峰',
         'nameEn': 'sanfeng.zhang',
@@ -314,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
         this.hotdata = [];
         return;
       }
-      var Url = 'http://218.80.251.194:7788/index/hotSeach?name=' + big;
+      var Url = 'https://zhaoren.wellwinyun.com/index/hotSeach?name=' + big;
       this.bigfocus = false;
       uni.request({
         url: Url,
@@ -346,7 +369,7 @@ __webpack_require__.r(__webpack_exports__);
     big_confirm: function big_confirm(id) {var _this2 = this;
       console.log('id：' + id);
 
-      var Url = 'http://218.80.251.194:7788/index/seach?id=' + id;
+      var Url = 'https://zhaoren.wellwinyun.com/index/seach?id=' + id;
       this.bigfocus = false;
       uni.request({
         url: Url,
@@ -357,6 +380,7 @@ __webpack_require__.r(__webpack_exports__);
         success: function success(res) {
           _this2.ErrorRemind = '';
           _this2.hotdata = [];
+          _this2.imageData = [];
           if (res.data.code == '200') {
             _this2.ErrorRemind = '';
             _this2.data = [];
@@ -365,6 +389,8 @@ __webpack_require__.r(__webpack_exports__);
             console.log(res.data.data);
           } else {
             _this2.bigfocus = true;
+            _this2.data = [];
+            _this2.imageData = [{ "src": "src" }];
             _this2.ErrorRemind = res.data.message;
 
           }

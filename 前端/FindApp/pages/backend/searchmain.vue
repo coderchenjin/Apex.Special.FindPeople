@@ -53,6 +53,22 @@
 					</view>
 					<view style="height:8px;background:grey;margin:10px 0"></view>
 				</view>
+				
+				<view v-for="(item,i) in imageData">
+					
+					<view class="image-content">
+					                   <image style="width: 100%; height: 200px; background-color: #eeeeee;"  :src="src"
+					                       ></image>
+										   <div style="text-align:center ;">
+											   <label>暂无搜索内容</label>
+										   </div>
+										 <div style="text-align:center ;">
+										   											   <label>换个词试试吧</label>
+										   </div>
+										   
+										   
+					</view>
+				</view>
 
 			</view>
 		</view>
@@ -75,9 +91,15 @@
 
 			this.data = [];
 			this.hotdata = [];
+			this.imageData=[{"src":"src"}];
+		},onShow() {
+			this.bigfocus = true;
+
 		},
 		data() {
 			return {
+				bigfocus:true,
+				src:'/static/img/none.png',
 				icon: '搜索人名、项目',
 				items: ['全部', '联系人', '部门', '项目'],
 				current: 0,
@@ -88,6 +110,7 @@
 					"id": "b5486415da9f11e990ae00155d05700a",
 					"name": "陶方涛"
 				}],
+				imageData:[],
 				data: [{
 					'name': '张三峰',
 					'nameEn': 'sanfeng.zhang',
@@ -190,7 +213,7 @@
 					this.hotdata = [];
 					return;
 				}
-				var Url = 'http://218.80.251.194:7788/index/hotSeach?name=' + big;
+				var Url = 'https://zhaoren.wellwinyun.com/index/hotSeach?name=' + big;
 				this.bigfocus = false;
 				uni.request({
 					url: Url,
@@ -222,7 +245,7 @@
 			big_confirm(id) {
 				console.log('id：' + id);
 
-				var Url = 'http://218.80.251.194:7788/index/seach?id=' + id;
+				var Url = 'https://zhaoren.wellwinyun.com/index/seach?id=' + id;
 				this.bigfocus = false;
 				uni.request({
 					url: Url,
@@ -233,6 +256,7 @@
 					success: res => {
 						this.ErrorRemind = '';
 						this.hotdata = [];
+						this.imageData=[];
 						if (res.data.code == '200') {
 							this.ErrorRemind = '';
 							this.data=[];
@@ -241,6 +265,8 @@
 							console.log(res.data.data);
 						} else {
 							this.bigfocus = true;
+							this.data=[];
+							this.imageData=[{"src":"src"}];
 							this.ErrorRemind = res.data.message;
 
 						}

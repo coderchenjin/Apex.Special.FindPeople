@@ -156,7 +156,7 @@ var _default =
   data: function data() {
     return {
       big: "",
-      bigfocus: true,
+      bigfocus: false,
       smallbigfocus: false,
       smallbig: "",
 
@@ -170,7 +170,7 @@ var _default =
 
   },
   onLoad: function onLoad() {
-    this.bigfocus = true;
+    this.bigfocus = false;
     this.big = '';
     this.smallbigfocus = false;
     this.smallbig = '';
@@ -181,7 +181,7 @@ var _default =
     this.InpectionSmallBigData = [];
   },
   onShow: function onShow() {
-    this.bigfocus = true;
+    this.bigfocus = false;
     this.big = '';
     this.smallbigfocus = false;
     this.smallbig = '';
@@ -193,15 +193,9 @@ var _default =
   },
   methods: {
     focus_big: function focus_big() {
-      if (this.big.length > 0) {
-        this.big = '';
-        this.smallbig = '';
-        this.TotalInpectionBig = 0;
-        this.InWareHouseNumber = 0;
-      }
-      setTimeout(function () {
-        uni.hideKeyboard();
-      }, 500);
+      uni.navigateTo({
+        url: '/pages/backend/searchmain' });
+
     },
     smallbig_focus: function smallbig_focus() {
       if (this.smallbig.length > 0) {

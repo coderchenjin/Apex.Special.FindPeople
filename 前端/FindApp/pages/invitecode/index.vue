@@ -5,11 +5,13 @@
 				<span class="iline" style="text-align: center;">用户名：</span><Input class="zai-input iline" placeholder="请输入用户名"
 				 v-model="UserName" />
 			</view>
-		</view>
-		<view>
 			<button class="zai-btn button-style" @tap="Submit">登录</button>
-			<view style="height:400upx;width: 100%;">
-				<image src='../../static/img/u2.png' style="size:100% 100% ;">
+		</view>
+		<view style="clear: both;"></view>
+		<view>
+
+			<view style="height:400upx;width: 100%;margin-top: -150upx">
+				<image src='../../static/img/i-rooter.png' style="size:100% 100%;">
 				</image>
 			</view>
 		</view>
@@ -26,6 +28,7 @@
 				User_Error: '',
 				WXCode: '',
 				UserName: '',
+
 			}
 
 		},
@@ -118,7 +121,13 @@
 	.invitecodebox {
 		border: 1upx solid #006699;
 		padding: 20upx;
-		height: 300upx;
+		height: 400upx;
+		/* background-image: url('../../static/img/wb.png'); */
+		z-index: 999999;
+		position:relative;
+		margin-top: 10%;
+		background-color:#FFFFFF;
+		border-color: #C0C0C0;
 	}
 
 	.iline {
@@ -128,18 +137,11 @@
 	.label {
 		margin-top: 10upx;
 		padding: 10upx 10upx;
-
-	}
-
-	.zai-input {
-		background: #C8C7CC;
-
-
 	}
 
 	.input-placeholder,
 	.zai-input {
-		background: #C8C7CC;
+		background: #C0C0C0;
 		border-radius: 1upx;
 		padding: 5upx 0upx 5upx 0upx;
 		font-size: 36upx;
@@ -152,7 +154,7 @@
 		border: 0;
 		border-radius: 20upx;
 		font-size: 36upx;
-		margin-top: 20upx;
+		/* margin-top: 20upx; */
 
 	}
 

@@ -7,7 +7,7 @@
 				success: function(res) {
 					console.log("老用户11111" + res.data);
 					uni.redirectTo({
-						url: './pages/backend/searchmain'
+						url: './pages/backend/searchhome'
 					});
 				}
 			});

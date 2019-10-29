@@ -1,7 +1,7 @@
 <template>
 	<view>
 	<view style="height:400upx;width: 100%;background-color:#1377E3; text-align: center;">
-		<image src='../../static/img/LOGO.png' style="height:70%;width: 50%;" ></image>
+		<image src='../../static/img/LOGO.png' style="height:50%;width: 30%;" ></image>
 	
 	</view>
 	<view style="margin: 40upx;margin-top: -200upx;">
@@ -58,12 +58,11 @@
 					success: function(res) {
 						let currentwxcode = res.code;
 						uni.setStorageSync("findapp_wxcode", currentwxcode);
-						console.log('微信CODE' + currentwxcode)
 						uni.request({
 							url: 'https://zhaoren.wellwinyun.com/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
 							method: 'GET',
 							success: result => {
-								console.log('登录成功' + result);
+								
 								var sucdata = result.data;
 								if (sucdata.code == '200') {
 									let openid = sucdata.data;
@@ -114,7 +113,6 @@
 			uni.getStorage({
 				key: 'findapp_openid',
 				success: function(res) {
-					console.log("老用户222222222" + res.data);
 					uni.redirectTo({
 						url: '../backend/searchmain'
 					});
@@ -150,7 +148,7 @@
 	.input-placeholder,
 	.zai-input {
 		background: #C0C0C0;
-		border-radius: 1upx;
+		border-radius: 10upx;
 		padding: 5upx 0upx 5upx 0upx;
 		font-size: 36upx;
 		overflow: visible;

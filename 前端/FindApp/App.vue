@@ -5,9 +5,8 @@
 			uni.getStorage({
 				key: 'findapp_openid',
 				success: function(res) {
-					console.log("老用户11111" + res.data);
 					uni.redirectTo({
-						url: './pages/backend/searchhome'
+						url: './pages/backend/searchmain'
 					});
 				}
 			});

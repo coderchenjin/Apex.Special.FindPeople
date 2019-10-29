@@ -1,5 +1,11 @@
 <template>
-	<view style="margin: 40upx;">
+	<view>
+	<view style="height:400upx;width: 100%;background-color:#1377E3; text-align: center;">
+		<image src='../../static/img/LOGO.png' style="height:70%;width: 50%;" ></image>
+	
+	</view>
+	<view style="margin: 40upx;margin-top: -200upx;">
+	
 		<view class="invitecodebox">
 			<view style="margin: 100upx 10upx;">
 				<span class="iline" style="text-align: center;">用户名：</span><Input class="zai-input iline" placeholder="请输入用户名"
@@ -15,6 +21,7 @@
 				</image>
 			</view>
 		</view>
+	</view>
 	</view>
 </template>
 
@@ -128,6 +135,7 @@
 		margin-top: 10%;
 		background-color:#FFFFFF;
 		border-color: #C0C0C0;
+		border-radius: 10upx;
 	}
 
 	.iline {

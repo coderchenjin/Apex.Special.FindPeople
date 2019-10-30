@@ -7,7 +7,7 @@
 	<view style="margin: 40upx;margin-top: -200upx;">
 	
 		<view class="invitecodebox">
-			<view style="margin: 100upx 10upx;">
+			<view style="margin: 100upx 10upx;padding: 0upx;">
 				<span class="iline" style="text-align: center;">用户名：</span><Input class="zai-input iline" placeholder="请输入用户名"
 				 v-model="UserName" />
 			</view>
@@ -132,7 +132,7 @@
 		position:relative;
 		margin-top: 10%;
 		background-color:#FFFFFF;
-		border-color: #C0C0C0;
+		border-color: #e0e0e0;
 		border-radius: 10upx;
 	}
 
@@ -145,11 +145,11 @@
 		padding: 10upx 10upx;
 	}
 
-	.input-placeholder,
+	/* .input-placeholder, */
 	.zai-input {
 		background: #C0C0C0;
 		border-radius: 10upx;
-		padding: 5upx 0upx 5upx 0upx;
+		padding: 5upx 10upx 5upx 30upx;
 		font-size: 36upx;
 		overflow: visible;
 	}

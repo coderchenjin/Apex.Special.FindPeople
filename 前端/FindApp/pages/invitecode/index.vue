@@ -1,18 +1,27 @@
 <template>
-	<view style="margin: 40upx;">
+	<view>
+	<view style="height:400upx;width: 100%;background-color:#1377E3; text-align: center;">
+		<image src='../../static/img/LOGO.png' style="height:50%;width: 30%;" ></image>
+	
+	</view>
+	<view style="margin: 40upx;margin-top: -200upx;">
+	
 		<view class="invitecodebox">
-			<view style="margin: 100upx 10upx;">
+			<view style="margin: 100upx 10upx;padding: 0upx;">
 				<span class="iline" style="text-align: center;">用户名：</span><Input class="zai-input iline" placeholder="请输入用户名"
 				 v-model="UserName" />
 			</view>
-		</view>
-		<view>
 			<button class="zai-btn button-style" @tap="Submit">登录</button>
-			<view style="height:400upx;width: 100%;">
-				<image src='../../static/img/u2.png' style="size:100% 100% ;">
+		</view>
+		<view style="clear: both;"></view>
+		<view>
+
+			<view style="height:400upx;width: 100%;margin-top: -150upx">
+				<image src='../../static/img/i-rooter.png' style="size:100% 100%;">
 				</image>
 			</view>
 		</view>
+	</view>
 	</view>
 </template>
 
@@ -26,6 +35,7 @@
 				User_Error: '',
 				WXCode: '',
 				UserName: '',
+
 			}
 
 		},
@@ -48,17 +58,16 @@
 					success: function(res) {
 						let currentwxcode = res.code;
 						uni.setStorageSync("findapp_wxcode", currentwxcode);
-						console.log('微信CODE' + currentwxcode)
 						uni.request({
-							url: 'http://218.80.251.194:7788/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
+							url: 'https://zhaoren.wellwinyun.com/index/weChatAuthorization?code=' + res.code + '&name=' + cuser,
 							method: 'GET',
 							success: result => {
-								console.log('登录成功' + result);
+								
 								var sucdata = result.data;
 								if (sucdata.code == '200') {
 									let openid = sucdata.data;
 									uni.setStorageSync("findapp_openid", openid);
-									uni.navigateTo({
+									uni.redirectTo({
 										url: '../backend/searchmain'
 									});
 								} else if (sucdata.code == '400') {
@@ -101,20 +110,14 @@
 			}
 		},
 		onLoad() {
-			
-			uni.redirectTo({
-				url: '../backend/searchmain'
+			uni.getStorage({
+				key: 'findapp_openid',
+				success: function(res) {
+					uni.redirectTo({
+						url: '../backend/searchmain'
+					});
+				}
 			});
-			// uni.getStorage({
-			// 	key: 'findapp_openid',
-			// 	success: function(res) {
-			// 		console.log("老用户11111" + res.data);
-			// 		uni.navigateTo({
-			// 			url: './pages/backend/searchmain'
-			// 		});
-			// 	}
-			// });
-
 		}
 	}
 </script>
@@ -123,7 +126,14 @@
 	.invitecodebox {
 		border: 1upx solid #006699;
 		padding: 20upx;
-		height: 300upx;
+		height: 400upx;
+		/* background-image: url('../../static/img/wb.png'); */
+		z-index: 999999;
+		position:relative;
+		margin-top: 10%;
+		background-color:#FFFFFF;
+		border-color: #e0e0e0;
+		border-radius: 10upx;
 	}
 
 	.iline {
@@ -133,20 +143,13 @@
 	.label {
 		margin-top: 10upx;
 		padding: 10upx 10upx;
-
 	}
 
+	/* .input-placeholder, */
 	.zai-input {
-		background: #C8C7CC;
-
-
-	}
-
-	.input-placeholder,
-	.zai-input {
-		background: #C8C7CC;
-		border-radius: 1upx;
-		padding: 5upx 0upx 5upx 0upx;
+		background: #C0C0C0;
+		border-radius: 10upx;
+		padding: 5upx 10upx 5upx 30upx;
 		font-size: 36upx;
 		overflow: visible;
 	}
@@ -157,7 +160,7 @@
 		border: 0;
 		border-radius: 20upx;
 		font-size: 36upx;
-		margin-top: 20upx;
+		/* margin-top: 20upx; */
 
 	}
 

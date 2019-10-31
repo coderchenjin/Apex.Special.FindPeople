@@ -4,6 +4,8 @@
 			"path": "pages/invitecode/index",
 			"style": {
 				"navigationBarTitleText": "找人",
+				"navigationBarTextStyle":"white",
+				"navigationStyle":"default",
 				"navigationBarBackgroundColor": "#1377E3"
 			}
 		},

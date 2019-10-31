@@ -2,7 +2,14 @@
 .invitecodebox {
 	border: 1rpx solid #006699;
 	padding: 20rpx;
-	height: 300rpx;
+	height: 400rpx;
+	/* background-image: url('../../static/img/wb.png'); */
+	z-index: 999999;
+	position:relative;
+	margin-top: 10%;
+	background-color:#FFFFFF;
+	border-color: #e0e0e0;
+	border-radius: 10rpx;
 }
 .iline {
 	display: inline-block;
@@ -11,14 +18,12 @@
 	margin-top: 10rpx;
 	padding: 10rpx 10rpx;
 }
+
+/* .input-placeholder, */
 .zai-input {
-	background: #C8C7CC;
-}
-.input-placeholder,
-.zai-input {
-	background: #C8C7CC;
-	border-radius: 1rpx;
-	padding: 5rpx 0rpx 5rpx 0rpx;
+	background: #C0C0C0;
+	border-radius: 10rpx;
+	padding: 5rpx 10rpx 5rpx 30rpx;
 	font-size: 36rpx;
 	overflow: visible;
 }
@@ -28,7 +33,7 @@
 	border: 0;
 	border-radius: 20rpx;
 	font-size: 36rpx;
-	margin-top: 20rpx;
+	/* margin-top: 20upx; */
 }
 .zai-btn:after {
 	border: 0;

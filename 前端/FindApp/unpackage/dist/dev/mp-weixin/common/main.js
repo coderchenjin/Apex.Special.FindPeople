@@ -97,19 +97,14 @@ __webpack_require__.r(__webpack_exports__);
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
-    uni.redirectTo({
-      url: './pages/backend/searchmain' });
+    uni.getStorage({
+      key: 'findapp_openid',
+      success: function success(res) {
+        uni.redirectTo({
+          url: './pages/backend/searchmain' });
 
+      } });
 
-    // uni.getStorage({
-    // 	key: 'findapp_openid',
-    // 	success: function(res) {
-    // 		console.log("老用户11111" + res.data);
-    // 		uni.navigateTo({
-    // 			url: './pages/backend/searchmain'
-    // 		});
-    // 	}
-    // });
   },
   onShow: function onShow() {
     console.log('App Show');

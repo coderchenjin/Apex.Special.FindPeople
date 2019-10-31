@@ -8538,7 +8538,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/invitecode/index": { "navigationBarTitleText": "找人", "navigationBarBackgroundColor": "#1377E3" }, "pages/backend/index1": { "navigationBarTitleText": "" }, "pages/backend/searchhome": { "navigationBarTitleText": "搜索" }, "pages/backend/searchmain": { "navigationBarTitleText": "搜索", "navigationBarBackgroundColor": "#1377E3" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#ffffff", "backgroundColor": "#ffffff" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/invitecode/index": { "navigationBarTitleText": "找人", "navigationBarTextStyle": "white", "navigationStyle": "default", "navigationBarBackgroundColor": "#1377E3", "usingComponents": {} }, "pages/backend/index1": { "navigationBarTitleText": "", "usingComponents": { "q-s-waves-button": "/components/QS-WavesButton/QS-WavesButton" } }, "pages/backend/searchhome": { "navigationBarTitleText": "搜索", "usingComponents": {} }, "pages/backend/searchmain": { "navigationBarTitleText": "搜索", "navigationBarBackgroundColor": "#1377E3", "usingComponents": { "segmented-control": "/components/segmented-control" } } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#ffffff", "backgroundColor": "#ffffff" } };exports.default = _default;
 
 /***/ }),
 

@@ -54,22 +54,23 @@
 					<view style="height:8px;background:grey;margin:10px 0"></view>
 				</view>
 				
-				<view v-for="(item,i) in imageData">
-					
-					<view class="image-content">
-					                   <image style="width: 100%; height: 200px; background-color: #eeeeee;"  :src="src"
-					                       ></image>
-										   <div style="text-align:center ;">
-											   <label>暂无搜索内容</label>
-										   </div>
-										 <div style="text-align:center ;">
-										   											   <label>换个词试试吧</label>
-										   </div>
-										   
-										   
-					</view>
-				</view>
+				
 
+			</view>
+			<view v-for="(item,i) in imageData">
+				
+				<view class="image-content" style="text-align: center;background-color:#F2F3F7">
+				                   <image style="width: 263px; height: 263px; background-color: #eeeeee;margin:50% auto;"  :src="src"
+				                       ></image>
+									 <!--  <div style="text-align:center ;">
+										   <label>暂无搜索内容</label>
+									   </div>
+									 <div style="text-align:center ;">
+									   											   <label>换个词试试吧</label>
+									   </div> -->
+									   
+									   
+				</view>
 			</view>
 		</view>
 	</view>

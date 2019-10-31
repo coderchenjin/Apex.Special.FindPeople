@@ -9,7 +9,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
 	"appid": "wxea808207371e2f61",
-	"projectname": "%E6%99%BA%E8%83%BD%E6%89%BE%E4%BA%BA",
+	"projectname": "智能找人",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
